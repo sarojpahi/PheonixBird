@@ -3,6 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Model } from "@/Components/Scene";
 import * as THREE from "three";
 import { OrbitControls } from "@react-three/drei";
+import { Dance } from "@/Components/Dance";
 
 export default function Home() {
   return (
@@ -17,8 +18,9 @@ export default function Home() {
         <Canvas>
           <ambientLight intensity={0.6} />
           <Model scale={0.007} position={[0, -1.16, 0]} />
+          {/* <Dance scale={0.007} position={[0, -1.16, 0]} /> */}
 
-          {/* <OrbitControls /> */}
+          <OrbitControls />
         </Canvas>
       </main>
     </>
