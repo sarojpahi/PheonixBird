@@ -3,9 +3,11 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Model } from "@/Components/Scene";
 import * as THREE from "three";
 import { OrbitControls } from "@react-three/drei";
-import { Dance } from "@/Components/Dance";
+import { SillyDance } from "@/Components/SillyDance";
+import { useState } from "react";
 
 export default function Home() {
+  const [model, setModel] = useState(1);
   return (
     <>
       <Head>
@@ -15,10 +17,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="app">
+        <select onChange={(e) => setModel(e.target.value)}>
+          <option value="1">Pheonix</option>
+          <option value="2">Zombie</option>
+        </select>
         <Canvas>
           <ambientLight intensity={0.6} />
-          <Model scale={0.007} position={[0, -1.16, 0]} />
-          {/* <Dance scale={0.007} position={[0, -1.16, 0]} /> */}
+          {model == 1 ? (
+            <Model scale={0.007} position={[0, -1.16, 0]} />
+          ) : (
+            <SillyDance scale={2} position={[0, -1.5, 0]} />
+          )}
 
           <OrbitControls />
         </Canvas>
